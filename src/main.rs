@@ -23,10 +23,10 @@ fn main() {
 
         if menu_input == 0{
             // temp conversion
-            println!("not implemented");
+            temp_converter();
         }else if menu_input == 1 {
-                        // fibonacci
-                        println!("not implemented");
+            // fibonacci
+            println!("not implemented");
         }else if menu_input == 2 {
             // 12 days of christmas
             println!("not implemented");
