@@ -55,3 +55,31 @@ fn print_menu(){
     }
     println!();
 }
+
+
+// extract a number and what the number nee
+fn temp_converter()
+{
+    println!(" input temp as <value><F|C>");
+
+    let mut temp_input = String::new();
+    io::stdin()
+        .read_line(&mut temp_input)
+        .expect("failed to read the line");
+
+    println!("got {}",temp_input);
+    
+    let input_temp_val:f64= match temp_input.trim().parse() {
+        Ok(num) => num,
+        Err(_) => return,
+    };    
+    
+    if temp_input.find('F') != None{
+        // convert from F to c
+        println!("F to C");
+    }else if temp_input.find('C') != None {
+        // convert from C to F
+        println!("C to F");
+    }
+}
+
