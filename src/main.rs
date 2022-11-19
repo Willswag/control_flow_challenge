@@ -25,7 +25,7 @@ fn main() {
             temp_converter();
         }else if menu_input == 1 {
             // fibonacci
-            println!("not implemented");
+            fib_handler();
         }else if menu_input == 2 {
             // 12 days of christmas
             println!("not implemented");
@@ -99,4 +99,30 @@ fn convert_f_to_c(f :i32) -> i32{
 
 fn convert_c_to_f(c: i32) ->  i32{
     (c * 9/5) +32
+}
+
+fn fib_handler(){
+    println!("input number for fibonacci sequence");
+    let mut fib_input = String::new();
+    io::stdin()
+        .read_line(&mut fib_input)
+        .expect("failed to read the line");
+    
+    let fib_input:u32 = match fib_input.trim().parse() {
+        Ok(num) => num,
+        Err(_) => u32::MIN,
+    };
+    println!("fibonacci seq for {fib_input}");
+    for n in (0..fib_input).rev() {
+        let numb = fibonacci(n);
+        println!("{numb}");
+    }
+}
+
+fn fibonacci(n : u32) -> u32{
+    if n <= 1 {
+        1
+    }else {
+        fibonacci(n - 1) + fibonacci(n - 2)
+    }
 }
