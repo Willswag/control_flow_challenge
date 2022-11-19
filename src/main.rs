@@ -84,6 +84,8 @@ fn temp_converter()
     }else if temp_input.find('C') != None {
         // convert from C to F
         println!("C to F");
+        let out_temp = convert_c_to_f(input_temp_val);
+        println!("{out_temp}F");
 
     }else {
         println!("the string {} does not contain the units F | C ",temp_input);
@@ -93,4 +95,8 @@ fn temp_converter()
 
 fn convert_f_to_c(f :i32) -> i32{
     (f - 32 ) * (9/5) 
+}
+
+fn convert_c_to_f(c: i32) ->  i32{
+    (c * 9/5) +32
 }
