@@ -8,8 +8,35 @@ use std::io;
 fn main() {
     'menu_loop: loop
     {
+        let mut menu_input = String::new();
         print_menu();
 
+        io::stdin()
+            .read_line(&mut menu_input)
+            .expect("failed to read the line");
+        
+
+        let menu_input:u32 = match menu_input.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+
+        if menu_input == 0{
+            // temp conversion
+            println!("not implemented");
+        }else if menu_input == 1 {
+                        // fibonacci
+                        println!("not implemented");
+        }else if menu_input == 2 {
+            // 12 days of christmas
+            println!("not implemented");
+        }else if  menu_input == 3{
+            // exit
+            break 'menu_loop;
+        }else {
+            println!("bad input");
+        }
+        
     }
 
 
@@ -26,5 +53,5 @@ fn print_menu(){
         println!("\t input {count} for {opt}");
         count += 1;
     }
-    println!("");
+    println!();
 }
