@@ -100,3 +100,12 @@ fn convert_f_to_c(f :i32) -> i32{
 fn convert_c_to_f(c: i32) ->  i32{
     (c * 9/5) +32
 }
+
+
+fn fibonacci(n : u32) -> u32{
+    if n <= 1 {
+        1
+    }else {
+        fibonacci(n -1)
+    }
+}
