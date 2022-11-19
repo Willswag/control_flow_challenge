@@ -4,7 +4,6 @@
 
 use std::io;
 
-
 fn main() {
     'menu_loop: loop
     {
@@ -69,17 +68,27 @@ fn temp_converter()
 
     println!("got {}",temp_input);
     
-    let input_temp_val:f64= match temp_input.trim().parse() {
-        Ok(num) => num,
-        Err(_) => return,
-    };    
+   
     
     if temp_input.find('F') != None{
         // convert from F to c
         println!("F to C");
+        let input_temp_val = extract_temp_val(&mut temp_input);
+
     }else if temp_input.find('C') != None {
         // convert from C to F
         println!("C to F");
+        let input_temp_val = extract_temp_val(&mut temp_input);
+
+    }else {
+        println!("the string {} does not contain the units F | C ",temp_input);
     }
 }
 
+fn extract_temp_val(temp_str: &str) -> f64{
+    let input_temp_val:f64= match temp_str.trim().parse() {
+        Ok(num) => num,
+        Err(_) => return f64::NAN,
+    };
+    return input_temp_val;
+}
