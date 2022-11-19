@@ -112,6 +112,7 @@ fn fib_handler(){
         Ok(num) => num,
         Err(_) => u32::MIN,
     };
+    println!("fibonacci seq for {fib_input}");
     for n in (0..fib_input).rev() {
         let numb = fibonacci(n);
         println!("{numb}");
