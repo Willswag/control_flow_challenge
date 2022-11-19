@@ -4,7 +4,6 @@
 
 use std::io;
 
-
 fn main() {
     'menu_loop: loop
     {
@@ -23,10 +22,10 @@ fn main() {
 
         if menu_input == 0{
             // temp conversion
-            println!("not implemented");
+            temp_converter();
         }else if menu_input == 1 {
-                        // fibonacci
-                        println!("not implemented");
+            // fibonacci
+            println!("not implemented");
         }else if menu_input == 2 {
             // 12 days of christmas
             println!("not implemented");
@@ -54,4 +53,50 @@ fn print_menu(){
         count += 1;
     }
     println!();
+}
+
+
+// extract a number and what the number nee
+fn temp_converter()
+{
+    println!("input temp as <value><F|C>");
+
+    let mut temp_input = String::new();
+    io::stdin()
+        .read_line(&mut temp_input)
+        .expect("failed to read the line");
+
+    println!("got {}",temp_input);
+    // remove the chars
+    let extra:String = temp_input.chars().filter(|c| c.is_digit(10)).collect();
+    
+    let input_temp_val: i32 = match extra.trim().parse() {
+        Ok(num) => num,
+        Err(_) => i32::MAX,
+    };
+
+    if temp_input.find('F') != None{
+        // convert from F to c
+        println!("F to C");
+        let out_temp:i32 = convert_f_to_c(input_temp_val);
+        println!("{out_temp}C");
+
+    }else if temp_input.find('C') != None {
+        // convert from C to F
+        println!("C to F");
+        let out_temp = convert_c_to_f(input_temp_val);
+        println!("{out_temp}F");
+
+    }else {
+        println!("the string {} does not contain the units F | C ",temp_input);
+    }
+}
+
+
+fn convert_f_to_c(f :i32) -> i32{
+    (f - 32 ) * (9/5) 
+}
+
+fn convert_c_to_f(c: i32) ->  i32{
+    (c * 9/5) +32
 }
