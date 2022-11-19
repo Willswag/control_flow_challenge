@@ -6,11 +6,19 @@ use std::io;
 
 
 fn main() {
-    print_menu();
+    'menu_loop: loop
+    {
+        print_menu();
+
+    }
+
+
+
+
 }
 
 fn print_menu(){
-    let options = ["temp conversion", "fibonacci", "12 days of christmas"];
+    let options = ["temp conversion", "fibonacci", "12 days of christmas", "exit"];
     let mut count = 0;
     println!("===== Control flow challenge ====");
     println!();
