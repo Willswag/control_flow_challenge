@@ -59,7 +59,7 @@ fn print_menu(){
 // extract a number and what the number nee
 fn temp_converter()
 {
-    println!(" input temp as <value><F|C>");
+    println!("input temp as <value><F|C>");
 
     let mut temp_input = String::new();
     io::stdin()
@@ -67,28 +67,30 @@ fn temp_converter()
         .expect("failed to read the line");
 
     println!("got {}",temp_input);
+    // remove the chars
+    let extra:String = temp_input.chars().filter(|c| c.is_digit(10)).collect();
     
-   
-    
+    let input_temp_val: i32 = match extra.trim().parse() {
+        Ok(num) => num,
+        Err(_) => i32::MAX,
+    };
+
     if temp_input.find('F') != None{
         // convert from F to c
         println!("F to C");
-        let input_temp_val = extract_temp_val(&mut temp_input);
+        let out_temp:i32 = convert_f_to_c(input_temp_val);
+        println!("{out_temp}C");
 
     }else if temp_input.find('C') != None {
         // convert from C to F
         println!("C to F");
-        let input_temp_val = extract_temp_val(&mut temp_input);
 
     }else {
         println!("the string {} does not contain the units F | C ",temp_input);
     }
 }
 
-fn extract_temp_val(temp_str: &str) -> f64{
-    let input_temp_val:f64= match temp_str.trim().parse() {
-        Ok(num) => num,
-        Err(_) => return f64::NAN,
-    };
-    return input_temp_val;
+
+fn convert_f_to_c(f :i32) -> i32{
+    (f - 32 ) * (9/5) 
 }
