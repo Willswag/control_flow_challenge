@@ -28,7 +28,7 @@ fn main() {
             fib_handler();
         }else if menu_input == 2 {
             // 12 days of christmas
-            println!("not implemented");
+            twelve_days();
         }else if  menu_input == 3{
             // exit
             break 'menu_loop;
@@ -124,5 +124,37 @@ fn fibonacci(n : u32) -> u32{
         1
     }else {
         fibonacci(n - 1) + fibonacci(n - 2)
+    }
+}
+
+fn twelve_days() {
+    let mut day = 0;
+    let gifts = [
+        "100m sandback sprint",
+        "kettlebell swings",
+        "box jumps",
+        "deadlifts",
+        "hangcleans",
+        "front squats",
+        "pushpress",
+        "burpees",
+        "wallballs",
+        "pullups",
+        "toes to bar",
+        "handstand pushups"
+        ];
+    loop{
+        if day != 0 {
+            if day == 13 {
+                break;
+            } 
+            println!("on the {} of christmas my Jeff made me do:",day);
+    
+            for n in (0..day).rev(){
+                println!("{} x {}",n+1,gifts[n])
+            }
+        }
+        day +=1;
+
     }
 }
